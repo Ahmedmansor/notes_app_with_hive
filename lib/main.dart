@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app_with_hive/views/notes_view.dart';
 
 void main() {
   runApp(const NotesAppWithHive());
@@ -9,6 +10,9 @@ class NotesAppWithHive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      theme: ThemeData.dark(),
+      home: const NotesView(),
+    );
   }
 }
