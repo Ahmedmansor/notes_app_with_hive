@@ -17,11 +17,16 @@ class EditNoteViewBody extends StatelessWidget {
           AppSettings.heightSpace(amountHeight: 0.06),
           const CustomAppBar(
             text: 'Edit Note',
-            icon: FontAwesomeIcons.trash,
+            icon: FontAwesomeIcons.check,
           ),
           AppSettings.heightSpace(amountHeight: 0.06),
           const CustomTextField(
-            title: 'edit',
+            title: 'Title',
+          ),
+          AppSettings.heightSpace(amountHeight: 0.03),
+          const CustomTextField(
+            title: 'content',
+            maxLines: 5,
           ),
         ],
       ),
