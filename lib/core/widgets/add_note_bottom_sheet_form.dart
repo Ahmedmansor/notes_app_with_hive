@@ -3,14 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app_with_hive/colors.dart';
 import 'package:notes_app_with_hive/core/widgets/custom_text_field.dart';
 import 'package:notes_app_with_hive/cubits/add_note_cubit.dart/cubit/add_note_cubit.dart';
-import 'package:notes_app_with_hive/cubits/cubit/main_cubit.dart';
-
-import '../../models/note_model.dart';
 import '../utils/app_settings.dart';
 import 'custom_button.dart';
 
-class AddNoteForm extends StatelessWidget {
-  const AddNoteForm({
+class AddNoteBottomSheetForm extends StatelessWidget {
+  const AddNoteBottomSheetForm({
     super.key,
   });
   @override
@@ -67,7 +64,7 @@ class AddNoteForm extends StatelessWidget {
                   },
                   text: 'Add',
                   textColor: Colors.black,
-                  isLoading: state is AddNoteLoading ? true : false,
+                  isLoading: state is AddNoteLoading,
                 );
               },
             ),
