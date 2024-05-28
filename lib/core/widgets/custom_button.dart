@@ -9,7 +9,8 @@ class CustomButton extends StatelessWidget {
       required this.onPressed,
       required this.backgroundColor,
       this.fontSize,
-      required this.textColor});
+      required this.textColor,
+      this.isLoading = false});
 
   final BorderRadiusGeometry? borderRadius;
   final String text;
@@ -17,6 +18,8 @@ class CustomButton extends StatelessWidget {
   final void Function() onPressed;
   final Color backgroundColor;
   final double? fontSize;
+  final bool isLoading;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -26,13 +29,21 @@ class CustomButton extends StatelessWidget {
         color: backgroundColor,
         shape: RoundedRectangleBorder(
             borderRadius: borderRadius ?? BorderRadius.circular(12)),
-        child: Text(
-          text,
-          style: Styles.textStyle18.copyWith(
-              fontWeight: FontWeight.bold,
-              fontSize: fontSize,
-              color: textColor),
-        ),
+        child: isLoading
+            ? const SizedBox(
+                height: 24,
+                width: 24,
+                child: CircularProgressIndicator(
+                  color: Colors.black,
+                ),
+              )
+            : Text(
+                text,
+                style: Styles.textStyle18.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: fontSize,
+                    color: textColor),
+              ),
       ),
     );
   }

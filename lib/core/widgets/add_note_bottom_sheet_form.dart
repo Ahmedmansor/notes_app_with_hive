@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app_with_hive/colors.dart';
 import 'package:notes_app_with_hive/core/widgets/custom_text_field.dart';
 import 'package:notes_app_with_hive/cubits/add_note_cubit.dart/cubit/add_note_cubit.dart';
@@ -57,13 +58,18 @@ class AddNoteForm extends StatelessWidget {
           ),
           SizedBox(
             width: AppSettings.width,
-            child: CustomButton(
-              backgroundColor: ColorsApp.kPrimaryColor,
-              onPressed: () {
-                addnoteCubit.validate();
+            child: BlocBuilder<AddNoteCubit, AddNoteState>(
+              builder: (context, state) {
+                return CustomButton(
+                  backgroundColor: ColorsApp.kPrimaryColor,
+                  onPressed: () {
+                    addnoteCubit.validate();
+                  },
+                  text: 'Add',
+                  textColor: Colors.black,
+                  isLoading: state is AddNoteLoading ? true : false,
+                );
               },
-              text: 'Add',
-              textColor: Colors.black,
             ),
           ),
           SizedBox(
