@@ -1,26 +1,30 @@
-import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
+// import 'package:bloc/bloc.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:meta/meta.dart';
 
-part 'main_state.dart';
+// import '../../models/note_model.dart';
 
-class MainCubit extends Cubit<MainState> {
-  MainCubit() : super(MainInitial());
-//Create Validate form
-  static MainCubit get(context) => BlocProvider.of(context);
+// part 'main_state.dart';
 
-  final formKey = GlobalKey<FormState>();
-  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  String? title, content;
+// class MainCubit extends Cubit<MainState> {
+//   MainCubit() : super(MainInitial());
+// //Create Validate form
+//   static MainCubit get(context) => BlocProvider.of(context);
 
-  void validate() {
-    if (formKey.currentState!.validate()) {
-      formKey.currentState?.save();
-      emit(TextFormFieldValidateSucess());
-    } else {
-      autovalidateMode = AutovalidateMode.always;
-      emit(TextFormFieldValidateError());
-    }
-  }
-}
+//   final formKey = GlobalKey<FormState>();
+//   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+//   String? title, content;
+
+//   void validate() {
+//     if (formKey.currentState!.validate()) {
+//       formKey.currentState?.save();
+//       // emit(TextFormFieldValidateSucess());
+ 
+
+//     } else {
+//       autovalidateMode = AutovalidateMode.always;
+//       // emit(TextFormFieldValidateError());
+//     }
+//   }
+// }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app_with_hive/colors.dart';
 import 'package:notes_app_with_hive/core/widgets/custom_text_field.dart';
+import 'package:notes_app_with_hive/cubits/add_note_cubit.dart/cubit/add_note_cubit.dart';
 import 'package:notes_app_with_hive/cubits/cubit/main_cubit.dart';
 
+import '../../models/note_model.dart';
 import '../utils/app_settings.dart';
 import 'custom_button.dart';
 
@@ -12,11 +14,11 @@ class AddNoteForm extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    var mainCubit = MainCubit.get(context);
+    var addnoteCubit = AddNoteCubit.get(context);
 
     return Form(
-      key: mainCubit.formKey,
-      autovalidateMode: mainCubit.autovalidateMode,
+      key: addnoteCubit.formKey,
+      autovalidateMode: addnoteCubit.autovalidateMode,
       child: Column(
         children: [
           const SizedBox(
@@ -25,7 +27,7 @@ class AddNoteForm extends StatelessWidget {
           CustomTextField(
             title: 'title',
             onSaved: (value) {
-              mainCubit.title = value;
+              addnoteCubit.title = value;
             },
             validator: (p0) {
               if (p0?.isEmpty ?? true) {
@@ -41,7 +43,7 @@ class AddNoteForm extends StatelessWidget {
             title: 'content',
             maxLines: 5,
             onSaved: (p0) {
-              mainCubit.content = p0;
+              addnoteCubit.content = p0;
             },
             validator: (p0) {
               if (p0?.isEmpty ?? true) {
@@ -58,7 +60,7 @@ class AddNoteForm extends StatelessWidget {
             child: CustomButton(
               backgroundColor: ColorsApp.kPrimaryColor,
               onPressed: () {
-                mainCubit.validate();
+                addnoteCubit.validate();
               },
               text: 'Add',
               textColor: Colors.black,

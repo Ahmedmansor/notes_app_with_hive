@@ -14,3 +14,8 @@ final class AddNoteError extends AddNoteState {
   final String error;
   AddNoteError(this.error);
 }
+//! -------------------------
+
+final class TextFormFieldValidateSucess extends AddNoteState {}
+
+final class TextFormFieldValidateError extends AddNoteState {}

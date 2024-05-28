@@ -1,11 +1,11 @@
-part of 'main_cubit.dart';
+// part of 'main_cubit.dart';
 
-@immutable
-sealed class MainState {}
+// @immutable
+// sealed class MainState {}
 
-final class MainInitial extends MainState {}
-//! -------------------------
+// final class MainInitial extends MainState {}
+// //! -------------------------
 
-class TextFormFieldValidateSucess extends MainState {}
+// // class TextFormFieldValidateSucess extends MainState {}
 
-class TextFormFieldValidateError extends MainState {}
+// // class TextFormFieldValidateError extends MainState {}

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
@@ -11,6 +12,7 @@ class AddNoteCubit extends Cubit<AddNoteState> {
   AddNoteCubit() : super(AddNoteInitial());
 
   static AddNoteCubit get(context) => BlocProvider.of(context);
+
   addNote(NoteModel note) async {
     emit(AddNoteLoading());
 
@@ -20,6 +22,28 @@ class AddNoteCubit extends Cubit<AddNoteState> {
       emit(AddNoteSucess());
     } on Exception catch (e) {
       emit(AddNoteError(e.toString()));
+    }
+  }
+
+  final formKey = GlobalKey<FormState>();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? title, content;
+
+  void validate() {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState?.save();
+      emit(TextFormFieldValidateSucess());
+
+      var note = NoteModel(
+          title: title!,
+          subtitle: content!,
+          color: Colors.white70.value,
+          date: DateTime.now().toString());
+
+      addNote(note);
+    } else {
+      autovalidateMode = AutovalidateMode.always;
+      emit(TextFormFieldValidateError());
     }
   }
 }
