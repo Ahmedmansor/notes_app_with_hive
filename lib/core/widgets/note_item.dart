@@ -4,7 +4,8 @@ import 'package:notes_app_with_hive/core/utils/navigation.dart';
 import 'package:notes_app_with_hive/views/edit_note_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
+  const NoteItem({super.key, required this.title, required this.body});
+  final String title, body;
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +26,17 @@ class NoteItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title: const Padding(
-                padding: EdgeInsets.only(bottom: 16),
+              title: Padding(
+                padding: const EdgeInsets.only(bottom: 16),
                 child: Text(
-                  'Flutter tips ',
-                  style: TextStyle(color: Colors.black, fontSize: 26),
+                  title,
+                  style: const TextStyle(color: Colors.black, fontSize: 26),
                 ),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.only(bottom: 16),
                 child: Text(
-                  'Build your Career with Tharwat Samy',
+                  body,
                   style: TextStyle(
                       color: Colors.black.withOpacity(0.4), fontSize: 18),
                 ),

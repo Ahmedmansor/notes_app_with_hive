@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app_with_hive/core/widgets/note_item.dart';
+import 'package:notes_app_with_hive/cubits/get_all_notes/get_all_notes_cubit.dart';
 
 class NotesListView extends StatelessWidget {
   const NotesListView({super.key});
@@ -17,7 +18,10 @@ class NotesListView extends StatelessWidget {
         },
         itemCount: 10,
         itemBuilder: (context, index) {
-          return const NoteItem();
+          return const NoteItem(
+            body: "asd",
+            title: 'adfaf',
+          );
         },
       ),
     );

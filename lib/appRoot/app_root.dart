@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app_with_hive/core/utils/app_settings.dart';
-import 'package:notes_app_with_hive/cubits/cubit/main_cubit.dart';
+import 'package:notes_app_with_hive/cubits/get_all_notes/get_all_notes_cubit.dart';
 import '../cubits/add_note_cubit.dart/cubit/add_note_cubit.dart';
 import '../views/notes_view.dart';
 
@@ -15,6 +15,9 @@ class AppRoot extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => AddNoteCubit(),
+        ),
+        BlocProvider(
+          create: (context) => GetAllNotesCubit()..getAllNotes(),
         ),
       ],
       child: MaterialApp(
