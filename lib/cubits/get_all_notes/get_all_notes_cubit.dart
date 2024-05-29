@@ -13,9 +13,9 @@ class GetAllNotesCubit extends Cubit<GetAllNotesState> {
 
   static GetAllNotesCubit get(context) => BlocProvider.of(context);
 
-  void getAllNotes() {
+  List<NoteModel>? notes;
+  void getAllNotes() async {
     var notesBox = Hive.box<NoteModel>(kNotesBox);
-    List<NoteModel> notes = notesBox.values.toList();
-    emit(GetAllNotesSuccess(notes));
+    notes = notesBox.values.toList();
   }
 }

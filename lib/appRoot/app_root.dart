@@ -17,7 +17,7 @@ class AppRoot extends StatelessWidget {
           create: (context) => AddNoteCubit(),
         ),
         BlocProvider(
-          create: (context) => GetAllNotesCubit()..getAllNotes(),
+          create: (context) => GetAllNotesCubit(),
         ),
       ],
       child: MaterialApp(
