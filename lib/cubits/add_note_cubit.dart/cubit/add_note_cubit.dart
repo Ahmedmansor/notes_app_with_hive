@@ -5,7 +5,7 @@ import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 import 'package:notes_app_with_hive/models/note_model.dart';
 import 'package:notes_app_with_hive/resource/const.dart';
-
+import 'package:intl/intl.dart';
 part 'add_note_state.dart';
 
 class AddNoteCubit extends Cubit<AddNoteState> {
@@ -38,7 +38,7 @@ class AddNoteCubit extends Cubit<AddNoteState> {
           title: title!,
           subtitle: content!,
           color: Colors.white70.value,
-          date: DateTime.now().toString());
+          date: DateFormat('dd-MM-yyyy').format(DateTime.now()));
 
       addNote(note);
     } else {
