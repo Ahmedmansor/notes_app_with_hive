@@ -51,7 +51,11 @@ class AddNoteBottomSheetForm extends StatelessWidget {
             },
           ),
           SizedBox(
-            height: AppSettings.height * 0.1,
+            height: AppSettings.height * 0.02,
+          ),
+          const ColorsListView(),
+          SizedBox(
+            height: AppSettings.height * 0.02,
           ),
           SizedBox(
             width: AppSettings.width,
@@ -73,6 +77,41 @@ class AddNoteBottomSheetForm extends StatelessWidget {
             height: AppSettings.height * 0.02,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ColorItem extends StatelessWidget {
+  const ColorItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const CircleAvatar(
+      radius: 30,
+      backgroundColor: Colors.amber,
+    );
+  }
+}
+
+class ColorsListView extends StatelessWidget {
+  const ColorsListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 60,
+      child: ListView.separated(
+        separatorBuilder: (context, index) {
+          return const SizedBox(
+            width: 5,
+          );
+        },
+        scrollDirection: Axis.horizontal,
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return const ColorItem();
+        },
       ),
     );
   }
