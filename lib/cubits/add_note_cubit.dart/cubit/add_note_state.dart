@@ -19,3 +19,6 @@ final class AddNoteError extends AddNoteState {
 final class TextFormFieldValidateSucess extends AddNoteState {}
 
 final class TextFormFieldValidateError extends AddNoteState {}
+
+//! -------------------------
+final class ChangeColor extends AddNoteState {}

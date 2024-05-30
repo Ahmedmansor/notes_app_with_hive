@@ -13,6 +13,12 @@ class AddNoteCubit extends Cubit<AddNoteState> {
 
   static AddNoteCubit get(context) => BlocProvider.of(context);
 
+  // void changeColor(int index) {
+  //   currentIndex = index;
+  //   color = colors[index];
+  //   emit(ChangeColor());
+  // }
+  Color color = const Color(0xffd8d0c1);
   addNote(NoteModel note) async {
     emit(AddNoteLoading());
 
@@ -37,7 +43,7 @@ class AddNoteCubit extends Cubit<AddNoteState> {
       var note = NoteModel(
           title: title!,
           subtitle: content!,
-          color: Colors.white70.value,
+          color: color.value,
           date: DateFormat('dd-MM-yyyy').format(DateTime.now()));
 
       addNote(note);

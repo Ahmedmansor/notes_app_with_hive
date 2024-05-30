@@ -53,7 +53,7 @@ class AddNoteBottomSheetForm extends StatelessWidget {
           SizedBox(
             height: AppSettings.height * 0.02,
           ),
-          const ColorsListView(),
+          const ListtViewColors(),
           SizedBox(
             height: AppSettings.height * 0.02,
           ),
@@ -83,20 +83,48 @@ class AddNoteBottomSheetForm extends StatelessWidget {
 }
 
 class ColorItem extends StatelessWidget {
-  const ColorItem({super.key});
+  const ColorItem({
+    super.key,
+    required this.isSelected,
+    required this.color,
+  });
+  final bool isSelected;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return const CircleAvatar(
-      radius: 30,
-      backgroundColor: Colors.amber,
-    );
+    return isSelected
+        ? CircleAvatar(
+            backgroundColor: Colors.white,
+            radius: 30,
+            child: CircleAvatar(
+              backgroundColor: color,
+              radius: 28,
+            ))
+        : CircleAvatar(
+            backgroundColor: color,
+            radius: 30,
+          );
   }
 }
 
-class ColorsListView extends StatelessWidget {
-  const ColorsListView({super.key});
+class ListtViewColors extends StatefulWidget {
+  const ListtViewColors({super.key});
 
+  @override
+  State<ListtViewColors> createState() => _ListtViewColorsState();
+}
+
+class _ListtViewColorsState extends State<ListtViewColors> {
+  int currentIndex = 0;
+  List<Color> colors = const [
+    Color(0xffd8d0c1),
+    Color(0xffE0D3DE),
+    Color(0xffFCBB8A),
+    Color(0xffB3B492),
+    Color(0xff52B788),
+    Color(0xff6B7F82),
+  ];
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -104,13 +132,23 @@ class ColorsListView extends StatelessWidget {
       child: ListView.separated(
         separatorBuilder: (context, index) {
           return const SizedBox(
-            width: 5,
+            width: 10,
           );
         },
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: colors.length,
         itemBuilder: (context, index) {
-          return const ColorItem();
+          return GestureDetector(
+            onTap: () {
+              currentIndex = index;
+              AddNoteCubit.get(context).color = colors[index];
+              setState(() {});
+            },
+            child: ColorItem(
+              isSelected: currentIndex == index,
+              color: colors[index],
+            ),
+          );
         },
       ),
     );
