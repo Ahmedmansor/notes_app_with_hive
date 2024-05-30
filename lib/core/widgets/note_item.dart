@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app_with_hive/core/utils/navigation.dart';
+import 'package:notes_app_with_hive/cubits/get_all_notes/get_all_notes_cubit.dart';
 import 'package:notes_app_with_hive/models/note_model.dart';
 import 'package:notes_app_with_hive/views/edit_note_view.dart';
 
@@ -14,7 +15,11 @@ class NoteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        NavigationUtils.goTo(context, const EditNoteView());
+        NavigationUtils.goTo(
+            context,
+            EditNoteView(
+              note: note,
+            ));
       },
       child: Container(
         padding: const EdgeInsets.only(
@@ -44,7 +49,10 @@ class NoteItem extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    note.delete();
+                    GetAllNotesCubit.get(context).getAllNotes();
+                  },
                   icon: const Icon(
                     FontAwesomeIcons.trash,
                     color: Colors.black,

@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app_with_hive/core/utils/navigation.dart';
 import 'package:notes_app_with_hive/cubits/add_note_cubit.dart/cubit/add_note_cubit.dart';
+import 'package:notes_app_with_hive/cubits/get_all_notes/get_all_notes_cubit.dart';
 
 import 'add_note_bottom_sheet_form.dart';
 
@@ -15,6 +16,7 @@ class AddNoteBottomSheet extends StatelessWidget {
       listener: (context, state) {
         if (state is AddNoteSucess) {
           NavigationUtils.offScreen(context);
+          GetAllNotesCubit.get(context).getAllNotes();
         }
         if (state is AddNoteError) {
           debugPrint('error ${state.error}');

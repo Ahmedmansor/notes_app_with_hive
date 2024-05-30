@@ -7,3 +7,4 @@ final class GetAllNotesInitial extends GetAllNotesState {}
 
 //--------------------------------
 
+final class GetAllNotesSucess extends GetAllNotesState {}
